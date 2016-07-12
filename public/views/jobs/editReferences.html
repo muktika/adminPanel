@@ -1,0 +1,135 @@
+<div class="container-fluid">
+  <br/><br/><br/><br/><br/>
+    <div class="col-sm-12 col-md-12">
+      <div class="col-sm-4 col-md-3">
+        <div class="mini-submenu">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </div>
+        <div class="list-group">
+            <span ui-sref="layout.addJob" class="list-group-item active">
+                Job
+            </span>
+            <a ui-sref="layout.listDetails" class="list-group-item">
+                Post Details
+            </a>
+            <a ui-sref="layout.listLifecycle" class="list-group-item">
+                Life Cycle Details
+            </a>
+            <a ui-sref="layout.editFilter" class="list-group-item">
+                Filters
+            </a>
+            <a ui-sref="layout.listEli" class="list-group-item">
+                Eligibility 
+            </a>
+            <a ui-sref="layout.listTag" class="list-group-item">
+                Tags 
+            </a>
+            <a ui-sref="layout.listRef" class="list-group-item">
+                References
+            </a>
+            <a ui-sref="layout.listContent" class="list-group-item">
+                Other Contents
+            </a>
+            <a ui-sref="layout.listLang" class="list-group-item">
+                Language Test
+            </a><br/>
+            <center><a class="btn btn-primary" ng-click="previewLink(id)">Preview</a>
+            <a class="btn btn-success" ng-click="publishLink(id)">Publish</a></center>
+        </div>        
+      </div>
+      <div class="col-sm-8 col-md-9">
+        <form class="ui form" name="rForm">
+          <h4 class="ui dividing header">Reference Info</h4>
+          <div class="ui info message">Fields marked with asterisk (*) are mandatory</div>
+
+          <div class="field">
+            <label for="title">Title (*)</label>
+            <input type="text" ng-model="jobRef.title" name="title" required />
+            <span ng-if="rForm.title.$touched && rForm.title.$invalid">Please Enter Value</span>
+          </div>
+
+          <div class="field">
+            <label for="description">Description (*)</label>
+            <textarea ng-model="jobRef.description" name="desc" required></textarea>
+            <span ng-if="rForm.desc.$touched && rForm.desc.$invalid">Please Enter Value</span>
+          </div>
+
+          <div class="fields">
+            <div class="six wide field">
+              <label for="referenceType">Reference Type (*)</label>
+              <select ng-model="jobRef.referenceType" name="rtype" required>
+                <option value="Official Notification">Official Notification</option>
+                <option value="Job Advertisement">Job Advertisement</option>
+                <option value="News">News</option>
+                <option value="Article">Article</option>
+                <option value="Preparatory Material">Preparatory Material</option>
+                <option value="Organization Website">Organization Website</option>
+                <option value="Application Link">Application Link</option>
+                <option value="Announcement Link">Announcement Link</option>
+              </select>
+              <span ng-if="rForm.rtype.$touched && rForm.rtype.$invalid">Please Enter Value</span>
+            </div>
+          </div>
+
+          <div class="fields">
+              <br/>
+              <div class="two wide field" ng-if="showUrl==0">
+                  <label>Link</label>
+                  <a target="_blank" ng-href="{{jobRef.url}}" class="btn btn-default">View Url</a> 
+              </div>
+              <div class="two wide field" ng-if="showUrl==1">
+                  <label>Link</label>
+                  <a target="_blank" ng-href="{{pdfUrl}}" class="btn btn-default">View Url</a> 
+              </div>
+              <div class="four wide field">
+                <label>Url</label>
+                <input type="url" ng-model="jobRef.url"/>
+              </div>
+              <div class="eight wide field">
+                <label>Change:</label>
+                <button ng-if="showUpload==0" ng-click="uploadByPdf()" class="btn btn-primary">Upload from Machine</button>
+                <input ng-if="showUpload==1" type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>
+                <button ng-if="showUpload==1" ng-click="cancelUp()" class="btn btn-sm btn-default">Cancel</button>
+                <button ng-if="showUpload==0" ng-click="uploadByUrl()" class="btn btn-primary">Upload from Url</button>
+                <input ng-if="showUpload==2" type="url" ng-model="up.upUrl"/>
+                <button ng-if="showUpload==2" ng-click="uploadPUrl(up.upUrl)" class="btn btn-sm btn-default">Save</button>
+                <button ng-if="showUpload==2" ng-click="cancelUp()" class="btn btn-sm btn-default">Cancel</button>
+                
+                
+              </div>
+              <br/>
+          </div>
+
+          <div class="fields">
+
+            <div class="three wide field">
+              <label for="displayOrder">Display Order (*)</label>
+              <input type="number" ng-model="jobRef.displayOrder" name="order" required />
+              <span ng-if="rForm.order.$touched && rForm.order.$invalid">Please Enter Value</span>
+            </div>
+         
+            <div class="two wide field">
+              <label for="isPublished">Is Published</label>
+              <input type="checkbox" ng-model="jobRef.isPublished"/>
+            </div>
+    
+            <div class="two wide field">
+              <label for="isActive">Is Active</label>
+              <input type="checkbox" ng-model="jobRef.isActive"/>
+            </div>
+          </div>
+          <div ng-if="jobRef.id!=0">
+            <button  type="submit" class="ui button" ng-click="rForm.$valid && saveJobRef(jobRef)">Submit</a>
+          </div>
+          <div ng-if="jobRef.id==0">
+            <button  type="submit" class="ui button" ng-click="rForm.$valid && createJobRef(jobRef)">Submit</button>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
+</div><!-- ui grid -->
+</div>
+</div>

@@ -1,0 +1,21 @@
+<div class="container-fluid page">
+  <br/><br/><br/><br/>
+  <h3>Send Chrome Notifications to Users</h3>
+   
+    <label>Created By:</label>
+    <input class="form-control" style="width:290px;" size="40" type="text" ng-model="createdBy"></input>
+
+  <h5>Notifications:</h5>
+    <label>Title:</label>
+    <input class="form-control" style="width:290px;" size="40" type="text" ng-model="notify.title"></input>
+
+    <label>Message: </label>
+    <input class="form-control" style="width:290px;" size="40" type="text" ng-model="notify.message"></input>
+
+    <label>Url: </label>
+    <input class="form-control" style="width:290px;" type="text" ng-model="notify.url"></input><br/>
+
+    <a class="btn btn-default" ng-click="notifyMe()">Send</a><br/><br/>
+    <h4>Repost notification: </h4>
+    <a class="btn btn-default" ng-click="repost()">Repost</a>
+</div>

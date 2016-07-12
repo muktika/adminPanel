@@ -1,0 +1,60 @@
+<div class="container-fluid">
+  <br/><br/><br/><br/><br/>
+    <div class="col-sm-12 col-md-12">
+      <div class="col-sm-4 col-md-3">
+        <div class="mini-submenu">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </div>
+        <div class="list-group">
+            <span ui-sref="layout.addJob" class="list-group-item active">
+                Job
+            </span>
+            <a ui-sref="layout.listDetails" class="list-group-item">
+                Post Details
+            </a>
+            <a ui-sref="layout.listLifecycle" class="list-group-item">
+                Life Cycle Details
+            </a>
+            <a ui-sref="layout.editFilter" class="list-group-item">
+                Filters
+            </a>
+            <a ui-sref="layout.listEli" class="list-group-item">
+                Eligibility 
+            </a>
+            <a ui-sref="layout.listTag" class="list-group-item">
+                Tags 
+            </a>
+            <a ui-sref="layout.listRef" class="list-group-item">
+                References
+            </a>
+            <a ui-sref="layout.listContent" class="list-group-item">
+                Other Contents
+            </a>
+            <a ui-sref="layout.listLang" class="list-group-item">
+                Language Test
+            </a><br/>
+            <center><a class="btn btn-primary" ng-click="previewLink(id)">Preview</a>
+            <a class="btn btn-success" ng-click="publishLink(id)">Publish</a></center>
+        </div>        
+      </div>
+      <div class="col-sm-8 col-md-9">
+        <form class="ui form" name="ltForm">
+          <h4 class="ui dividing header">Language Test Info</h4>
+          <div class="ui info message">Fields marked with asterisk (*) are mandatory</div>
+
+          <div class="field">
+            <label for="tag">Language ID(*)</label>
+            <input type="text" ng-model="jobLangTest.languageId" name="test" required />
+            <span ng-if="ltForm.test.$touched && ltForm.test.$invalid">Please Enter Value</span>
+          </div>
+
+          <button  type="submit" class="ui button" ng-click="ltForm.$valid && saveJobLT(jobLangTest)">Submit</button>
+        </form>
+      </div>
+  </div>
+</div>
+</div><!-- ui grid -->
+</div>
+</div> 

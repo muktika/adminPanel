@@ -1,0 +1,52 @@
+<div class="container-fluid page">
+	<br/><br/><br/><br/>
+	<div class="item">
+		<form class="ui form">
+			<div class="fields">
+				<div class="four wide field">
+					<label>Org Name:</label>
+					<input type="text" ng-model="searchOrgName"/>
+				</div>
+				<div class="four wide field">
+					<label>Org Code:</label>
+					<input type="text" ng-model="searchOrgCode"/>
+				</div>
+				<button style="margin-top: 20px;" ng-click="searchOrgname()" class="btn btn-primary">By Name</button>
+				<button style="margin-top: 20px;" ng-click="searchOrgcode()" class="btn btn-primary">By Code</button>
+				<button style="margin-top: 20px;" ng-click="searchOrg()" class="btn btn-primary">Both</button>
+				<div class="pull-right two wide field">
+					<button style="margin-top: 20px;" ng-click="latestUploads()" class="btn btn-success">Latest Upload</button>
+				</div>
+				<!--div class="pull-right two wide field">
+					<button style="margin-top: 20px;" ng-click="migrate()" class="btn btn-danger">Migrate</button>
+				</div-->
+			</div>
+	    </form>
+	</div><br/>
+    <div class="table-responsive allowX" ng-if="showList==1">
+		<table class="table table-bordered table-striped">
+			<thead>
+			  <tr>
+			    <th>ID</th>
+			    <th>Org Code</th>
+			    <th>Org Name</th>
+			    <th>Display Name</th>
+			    <th>Actions</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr ng-repeat="orgL in orgList track by $index">
+			    <td>{{ orgL.id }}</td>
+			    <td>{{ orgL.orgCode }}</td>
+			    <td>{{ orgL.name }}</td>
+			    <td>{{ orgL.displayName}}</td>
+			    <td>
+			      <div class="ui horizontal bulleted list">
+			        <a class="btn btn-sm btn-default" style="margin-right: 10px;" ng-click="editOrg(orgL)">Edit</a>
+			      </div>
+			    </td>
+			  </tr>
+			</tbody>
+		</table>
+  </div>
+</div>

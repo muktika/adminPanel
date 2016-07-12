@@ -1,0 +1,94 @@
+<div class="container-fluid">
+  <br/><br/><br/><br/><br/>
+    <div class="col-sm-12 col-md-12">
+      <div class="col-sm-4 col-md-3">
+        <div class="mini-submenu">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </div>
+        <div class="list-group">
+            <span ui-sref="layout.addJob" class="list-group-item active">
+                Job
+            </span>
+            <a ui-sref="layout.listDetails" class="list-group-item">
+                Post Details
+            </a>
+            <a ui-sref="layout.listLifecycle" class="list-group-item">
+                Life Cycle Details
+            </a>
+            <a ui-sref="layout.editFilter" class="list-group-item">
+                Filters
+            </a>
+            <a ui-sref="layout.listEli" class="list-group-item">
+                Eligibility 
+            </a>
+            <a ui-sref="layout.listTag" class="list-group-item">
+                Tags 
+            </a>
+            <a ui-sref="layout.listRef" class="list-group-item">
+                References
+            </a>
+            <a ui-sref="layout.listContent" class="list-group-item">
+                Other Contents
+            </a>
+            <a ui-sref="layout.listLang" class="list-group-item">
+                Language Test
+            </a><br/>
+            <center><a class="btn btn-primary" ng-click="previewLink(id)">Preview</a>
+            <a class="btn btn-success" ng-click="publishLink(id)">Publish</a></center>
+        </div>        
+      </div>
+      <div class="col-sm-8 col-md-9">
+        <form class="ui form" name="lcForm">
+          <h4 class="ui dividing header">Life Cycle Info</h4>
+          <div class="ui info message">Fields marked with asterisk (*) are mandatory</div>
+          <div class="field">
+            <label for="stageName">Stage Name (*)</label>
+            <input type="text" ng-model="jobLifecycle.stageName" name="name" required />
+            <span ng-if="lcForm.name.$touched && lcForm.name.$invalid">Please Enter Value</span>
+          </div>
+          <div class="field">
+            <label for="description">Description (*)</label>
+            <textarea ng-model="jobLifecycle.description" name="desc" required></textarea>
+            <span ng-if="lcForm.desc.$touched && lcForm.desc.$invalid">Please Enter Value</span>
+          </div>
+
+          <div class="fields">
+            <div class="five wide field">
+              <label for="url">URL</label>
+              <input type="url" ng-model="jobLifecycle.url"/>
+            </div>
+
+            <div class="five wide field">
+              <label for="targetDate">Target Date</label>
+              <input type="text" ng-model="jobLifecycle.targetDate"/>
+            </div>
+          </div>
+
+          <div class="fields">
+            <div class="two wide field">
+              <label for="isTentative">Is Tentative</label>
+              <input type="checkbox" ng-model="jobLifecycle.isTentative"/>
+            </div>
+
+            <div class="three wide field">
+              <label for="notifyCandidate">Notify Candidate?</label>
+              <input type="checkbox" ng-model="jobLifecycle.notifyCandidate"/>
+            </div>
+
+            <div class="two wide field">
+              <label for="displayOrder">Display Order</label>
+              <input type="text" ng-model="jobLifecycle.displayOrder"/>
+            </div>
+          </div>
+
+
+          <button  type="submit" class="ui button"  ng-click="lcForm.$valid && saveJobLifecycle(jobLifecycle)">Submit</button>
+        </form>
+      </div>
+  </div>
+</div>
+</div><!-- ui grid -->
+</div>
+</div>

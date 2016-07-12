@@ -1,0 +1,81 @@
+<div class="container-fluid page">
+<br/><br/><br/><br/>
+    Choose from options before uploading:<br/>
+    <label>Select Type:</label>
+    <select name="job" id="inputJob" class="form-control" required="required" style="width:100px;">
+      <option value="job">job</option>
+      <option value="loc">loc</option>
+      <option value="org">org</option>
+    </select>
+    <label>QC Type:</label>
+    <select name="bool" id="inputBool" class="form-control" required="required" style="width:100px;">
+      <option value="yes">yes</option>
+      <option value="no">no</option>
+    </select><br/><br/>
+    <form action="" id="uploadForm" enctype="multipart/form-data">
+      <input type="file" id="file" name="file" value="" placeholder=""> <br/>
+      <a ng-click="finish()" class="btn btn-primary">Upload</a>
+    </form>
+    <hr>
+    <div ng-if="showResult==1"><br/>
+      <h4>Result:</h4><br/>
+      <div class="table-responsive allowX">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Org Match Status</th>
+              <th>Loc Match Status</th>
+              <th>Job Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="rs in resultset track by $index">
+              <td>{{ name[$index] }}</td>
+              <td>{{ rs.status }}</td>
+              <td>{{ rs.locStatus }}</td>
+              <td>{{ rs.message }}</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+    </div>
+    <div ng-if="showResult==2"><br/>
+      <h4>Result:</h4><br/>
+      <div class="table-responsive allowX">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Org Name</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="rs in resultset track by $index">
+              <td>{{ rs.orgname }}</td>
+              <td>{{ rs.status }}</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+    </div>
+    <div ng-if="showResult==3"><br/>
+      <h4>Result:</h4><br/>
+      <div class="table-responsive allowX">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Location</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="rs in resultset track by $index">
+              <td>{{ rs.location }}</td>
+              <td>{{ rs.status }}</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+    </div>
+ </div>

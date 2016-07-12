@@ -1,0 +1,32 @@
+<div class="container-fluid page">
+	<br/><br/><br/><br/>
+	<div class="item pull-right">
+		<button ng-click="latestUploads()" class="btn btn-success">Latest Upload</button>
+	</div><br/><br/>
+    <div class="table-responsive allowX">
+		<table class="table table-bordered table-striped">
+			<thead>
+			  <tr>
+			    <th>ID</th>
+			    <th>Location Code</th>
+			    <th>Location Name</th>
+			    <th>Location Type</th>
+			    <th>Actions</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr ng-repeat="locL in locList track by $index">
+			    <td>{{ locL.id }}</td>
+			    <td>{{ locL.locationCode }}</td>
+			    <td>{{ locL.locationName }}</td>
+			    <td>{{ locL.locationType}}</td>
+			    <td>
+			      <div class="ui horizontal bulleted list">
+			        <a class="btn btn-sm btn-default" style="margin-right: 10px;" ng-click="editLoc(locL)">Edit</a>
+			      </div>
+			    </td>
+			  </tr>
+			</tbody>
+		</table>
+  </div>
+</div>

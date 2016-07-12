@@ -1,0 +1,104 @@
+<div class="container-fluid page">
+  <br/><br/><br/><br/><br/>
+  <div class="col-sm-12 col-md-12">
+    <div class="ui raised very padded segment">
+      <h3 class="ui dividing header">Add Organization</h3>
+      <div class="ui info message">Fields marked with asterisk (*) are mandatory</div>
+      <form class="ui form" name="orgForm">
+
+        <div class="field">
+            <label>Name (*)</label>
+            <input type="text" name="name" ng-model="organization.name" required>
+            <span ng-if="orgForm.name.$touched && orgForm.name.$invalid">Please Enter Value</span>
+        </div>
+
+        <div class="field">
+          <label>Display Name (*)</label>
+          <input type="text" name="dName" ng-model="organization.displayName" required>
+          <span ng-if="orgForm.dName.$touched && orgForm.dName.$invalid">Please Enter Value</span>
+        </div>
+
+        <div class="field">
+          <label>Organization Code (*)</label>
+          <input type="text" name="code" ng-model="organization.orgCode" required>
+          <span ng-if="orgForm.code.$touched && orgForm.code.$invalid">Please Enter Value</span>
+        </div>
+
+        <div class="field">
+          <label>Website URL</label>
+          <input type="text" ng-model="organization.websiteUrl">
+        </div>
+
+        <div class="field">
+          <label>Description</label>
+          <input type="text" ng-model="organization.description">
+        </div>
+
+        <div class="field">
+          <label>Group Name</label>
+          <input type="text" ng-model="organization.groupName">
+        </div>
+
+        <div class="field">
+          <label>Alias</label>
+          <input type="text" ng-model="organization.alias">
+        </div>
+
+        <div class="field">
+          <label>Perma Code</label>
+          <input type="text" ng-model="organization.permaCode">
+        </div>
+
+        <div class="field">
+          <label>Org Type</label>
+          <select ng-model="organization.orgType">
+            <option value="Banking, Insurance and Financial Services/ IBPS">Banking, Insurance and Financial Services/ IBPS</option>
+            <option value="Union Public Service Commission">Union Public Service Commission</option>
+            <option value="SSC">SSC</option>
+            <option value="State PSCs & SSSCs">State PSCs & SSSCs</option>
+            <option value="Central Government Ministries & Departments">Central Government Ministries & Departments</option>
+            <option value="State Government Ministries & Departments">State Government Ministries & Departments</option>
+            <option value="Public Sector Units">Public Sector Units</option>
+            <option value="Apex bodies & Regulators">Apex bodies & Regulators</option>
+            <option value="Defence">Defence</option>
+            <option value="Police/ Internal Security">Police/ Internal Security</option>
+            <option value="Railways/ Railway Recruitent Boards">Railways/ Railway Recruitent Boards</option>
+            <option value="Judiciary">Judiciary</option>
+            <option value="Research, Healthcare & Academia">Research, Healthcare & Academia</option>
+          </select>
+        </div>
+
+        <div class="fields">
+            <div class="two wide field" ng-if="showUrl==0">
+              <label>Link</label>
+              <a target="_blank" ng-href="{{organization.logoUrl}}" class="btn btn-default">View Logo Url</a> 
+            </div>
+            <div class="two wide field" ng-if="showUrl==1">
+                <label>Link</label>
+                <a target="_blank" ng-href="{{imgUrl}}" class="btn btn-default">View Logo Url</a>
+            </div>
+            <div class="four wide field">
+              <label>Url</label>
+              <input type="text" ng-model="organization.logoUrl"/>
+            </div>
+            <div class="eight wide field">
+              <label>Change:</label>
+              <button ng-if="showUpload==0" ng-click="uploadByImage()" class="btn btn-primary">Upload from Machine</button>
+              <input ng-if="showUpload==1" type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>
+              <button ng-if="showUpload==1" ng-click="cancelUp()" class="btn btn-sm btn-default">Cancel</button>
+              <button ng-if="showUpload==0" ng-click="uploadByUrl()" class="btn btn-primary">Upload from Url</button>
+              <input ng-if="showUpload==2" type="text" ng-model="up.upUrl"/>
+              <button ng-if="showUpload==2" ng-click="uploadOrgUrl(up.upUrl, organization.orgCode, organization.id)" class="btn btn-sm btn-default">Save</button>
+              <button ng-if="showUpload==2" ng-click="cancelUp()" class="btn btn-sm btn-default">Cancel</button>
+            </div>
+        </div>
+
+        
+
+
+        <button ng-if="orgForm.$valid" ng-click="saveOrg(organization)" class="ui button">Submit</button>
+
+      </form>
+    </div>
+  </div>
+</div>

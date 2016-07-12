@@ -1,0 +1,85 @@
+/*Custom Css*/
+
+/*Header Css*/
+img.img-responsive.navbar-brand {
+    position: fixed;
+    height: 50px;
+    padding: 0px !important;
+}
+
+/*Body Css*/
+.space{
+    margin-right:5px;
+}
+.center{
+    text-align: center;
+}
+.allowX{
+    overflow-x : scroll;
+}
+.allowY{
+    overflow-y : scroll;
+}
+.marginB{
+   margin-bottom: 30px;
+}
+
+.page{
+	background-color: #fff;
+    min-height: 650px;
+}
+
+ul.ui-autocomplete {
+    display: list-item !important;
+    width: 150px;
+    overflow-y: scroll;
+    max-height: 300px !important;
+    background: beige;
+    color: #000;
+}
+
+ul.ui-autocomplete.ui-menu {
+  z-index: 1000;
+}
+
+.ui-menu {
+    border: 1px solid #ffffff;
+}
+
+.marginTop{
+    margin-top: 20px;
+}
+
+.form-control{
+    height: auto !important;
+}
+
+.textEdit{
+    min-height: 200px;
+    width: 100%;
+}
+
+.ta-hidden-input{
+    display: none;
+}
+
+.cards{
+    float: left;
+    width: 33%;
+    height: 115px;
+    padding: 10px;
+    font-size: 10px;
+    line-height: 1.4;
+    text-align: center;
+    border: 1px solid #f9f9f9;
+}
+
+div.glyphicon.glyphicon-plus {
+    font-size: 65px;
+}
+
+.panel-body {
+    padding: 0px;
+}
+
+/*Footer Css*/

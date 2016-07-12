@@ -1,0 +1,77 @@
+<div class="container-fluid page">
+  <br/><br/><br/><br/>
+  <div class="item">
+    <form class="ui form">
+      <div class="fields">
+        <div class="three wide field">
+            <label>Job Code:</label>
+            <input type="text" ng-model="searchJobC"/>
+        </div>
+        <div class="three wide field">
+            <a ng-click="searchJobCode()" class="marginTop btn btn-primary">Search By Job Code</a>
+        </div>
+        <div class="pull-right">
+          <a ng-click="publishedJobs()" class="marginTop btn btn-success">All Published</a>
+          <a ng-click="unpublishedJobs()" class="marginTop btn btn-success">Not Published</a>
+          <a ng-click="latestUploads()" class="marginTop btn btn-success">Latest Upload</a>
+        </div>
+      </div>
+      <div class="fields">
+        <div class="three wide field">
+          <label>Org Name:</label>
+          <input type="text" ng-model="searchOrgName"/>
+        </div>
+        <div class="three wide field">
+          <label>Designation:</label>
+          <input type="text" ng-model="searchDesig"/>
+        </div>
+        <button ng-click="searchEmpName()" class="marginTop btn btn-primary">By Org Name</button>
+        <button ng-click="searchDesignation()" class="marginTop btn btn-primary">By Designation</button>
+        <button ng-click="searchBoth()" class="marginTop btn btn-primary">By Both</button>
+        <div class="pull-right">
+          <a ng-if="publish==0" class="marginTop btn btn-success" ng-click="publishAll()">Publish All</a>
+          <a ng-if="publish==1" class="marginTop btn btn-success" ng-click="publishIdList()">Done</a>
+          <a ng-if="preview==0" class="marginTop btn btn-success" ng-click="previewAll()">Preview All</a>
+          <a ng-if="preview==1" class="marginTop btn btn-success" ng-click="previewIdList()">Done</a>
+          
+        </div>
+      </div>
+    </form>
+  </div>
+  <br/>
+  <span ng-if="publish==1">
+    <input type="checkbox" ng-model="selectedAll" ng-click="selectAll(jobs)"/> Select All
+  </span>
+  <span ng-if="preview==1">
+    <input type="checkbox" ng-model="selectAll" ng-click="selectAllPreview(jobs)"/> Select All
+  </span><br/><br/>
+  <div class="table-responsive allowX" ng-if="showList==1">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Job ID</th>
+        <th>Job Code</th>
+        <th>Employer Name</th>
+        <th>Title</th>
+        <th>Is published?</th>
+        <th style="width:170px;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="job in jobs track by $index">
+        <td ng-if="publish==0 && preview==0">{{ job.id }}</td>
+        <td ng-if="publish==1"><input id="checkMe" type="checkbox" ng-model="job.selected" ng-click="addId(job.id)"/></td>
+        <td ng-if="preview==1"><input id="check" type="checkbox" ng-model="job.selected" ng-click="addIdPreview(job.id)"/></td>
+        <td>{{ job.jobCode }}</td>
+        <td>{{ job.employerName }}</td>
+        <td>{{ job.postDetail[0].jobTitle}}</td>
+        <td>{{ job.isPublished }}</td>
+        <td>
+            <a class="btn btn-default" style="margin-right: 10px;" ng-click="editJob(job.id)">Edit</a>
+            <a class="btn btn-primary" ng-click="previewLink(job.id)">Preview</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<div class="container-fluid page">
+  <br/><br/><br/><br/><br/>
+  <div class="col-sm-12 col-md-12">
+    <div class="ui raised very padded segment">
+      <h3 class="ui dividing header">Add Location</h3>
+      <div class="ui info message">Fields marked with asterisk (*) are mandatory</div>
+        <form class="ui form" name="locForm">
+          <div class="field">
+            <label>Name (*)</label>
+            <input type="text" name="name" ng-model="loc.locationName" required>
+            <span ng-if="locForm.name.$touched && locForm.name.$invalid">Please Enter Value</span>
+          </div>
+
+          <div class="field">
+            <label>Type (*)</label>
+            <select name="type" ng-model="loc.locationType" required>
+              <option value="City">City</option>
+              <option value="Country">Country</option>
+              <option value="State">State</option>
+              <option value="District">District</option>
+              <option value="Estate">Estate</option>
+              <option value="Border">Border</option>
+              <option value="International">International</option>
+              <option value="Pan India">Pan India</option>
+              <option value="Pan India Rural">Pan India Rural</option>
+              <option value="Pan India Metro">Pan India Metro</option>
+              <option value="Pan India Urban">Pan India Urban</option>
+            </select>
+            <span ng-if="locForm.type.$touched && locForm.type.$invalid">Please Enter Value</span>
+          </div>
+
+          <div class="field">
+            <label>Location Code (*)</label>
+            <input type="text" name="code" ng-model="loc.locationCode" required>
+            <span ng-if="locForm.code.$touched && locForm.code.$invalid">Please Enter Value</span>
+          </div>
+
+          <div class="field">
+            <label>Wikipedia Reference URL</label>
+            <input type="text" ng-model="loc.wikipediaReference"> 
+          </div>
+
+          <div class="field">
+            <label>Geo Coordinates (*)</label>
+            <input type="text" name="coords" ng-model="loc.geoCoordinates">
+            <span ng-if="locForm.coords.$touched && locForm.coords.$invalid">Please Enter Value</span> 
+          </div>
+
+          <div class="field">
+            <label>City</label>
+            <input type="text" ng-model="loc.city"> 
+          </div>
+
+          <div class="field">
+            <label>District</label>
+            <input type="text" ng-model="loc.district"> 
+          </div>
+
+          <div class="field">
+            <label>State</label>
+            <input type="text" ng-model="loc.state"> 
+          </div>
+
+          <div class="field">
+            <label>Country</label>
+            <input type="text" ng-model="loc.country"> 
+          </div>
+
+          <div class="fields">
+            <div class="two wide field">
+              <label for="isPublished">Is Published</label>
+              <input type="checkbox" ng-model="loc.isPublished">
+            </div>
+
+            <div class="two wide field">
+              <label for="isActive">Is Active</label>
+              <input type="checkbox" ng-model="loc.isActive">
+            </div>
+          </div> 
+
+          <button ng-if="locForm.$valid" ng-click="saveLoc(loc)" class="ui button">Submit</button>
+
+        </form>
+    </div>
+  </div>
+</div>

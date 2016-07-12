@@ -1,0 +1,85 @@
+<div class="container-fluid">
+  <br/><br/><br/><br/><br/>
+    <div class="col-sm-12 col-md-12">
+      <div class="col-sm-4 col-md-3">
+        <div class="mini-submenu">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </div>
+        <div class="list-group">
+            <span ui-sref="layout.addJob" class="list-group-item active">
+                Job
+            </span>
+            <a ui-sref="layout.listDetails" class="list-group-item">
+                Post Details
+            </a>
+            <a ui-sref="layout.listLifecycle" class="list-group-item">
+                Life Cycle Details
+            </a>
+            <a ui-sref="layout.editFilter" class="list-group-item">
+                Filters
+            </a>
+            <a ui-sref="layout.listEli" class="list-group-item">
+                Eligibility 
+            </a>
+            <a ui-sref="layout.listTag" class="list-group-item">
+                Tags 
+            </a>
+            <a ui-sref="layout.listRef" class="list-group-item">
+                References
+            </a>
+            <a ui-sref="layout.listContent" class="list-group-item">
+                Other Contents
+            </a>
+            <a ui-sref="layout.listLang" class="list-group-item">
+                Language Test
+            </a><br/>
+            <center><a class="btn btn-primary" ng-click="previewLink(id)">Preview</a>
+            <a class="btn btn-success" ng-click="publishLink(id)">Publish</a></center>
+        </div>        
+      </div>
+      <div class="col-sm-8 col-md-9">
+        <form class="ui form" name="conForm">
+          <h4 class="ui dividing header">Contents Info</h4>
+          <div class="ui info message">Fields marked with asterisk (*) are mandatory</div>
+            <div class="field">
+              <label for="sectionName">Section Name (*)</label>
+              <input type="text" ng-model="jobCon.sectionName" name="sname" required />
+              <span ng-if="conForm.sname.$touched && conForm.sname.$invalid">Please Enter Value</span>
+            </div>
+
+            <div class="field">
+              <label for="sectionContent">Section Content</label>
+              <textarea ng-model="jobCon.sectionContent"></textarea>
+            </div>
+
+            <div class="five wide field">
+              <label for="contentType">Content Type</label>
+              <input type="text" ng-model="jobCon.contentType"/>
+            </div>
+
+          <div class="fields">
+            <div class="three wide field">
+              <label for="displayOrder">Display Order</label>
+              <input type="text" ng-model="jobCon.displayOrder"/>
+            </div>
+
+            <div class="two wide field">
+              <label for="isPublished">Is Published</label>
+              <input type="checkbox" ng-model="jobCon.isPublished"/>
+            </div>
+    
+            <div class="two wide field">
+              <label for="isActive">Is Active</label>
+              <input type="checkbox" ng-model="jobCon.isActive"/>
+            </div>
+          </div> 
+          <button type="submit" class="ui button" ng-if="conForm.$valid" ng-click="saveJobContent(jobCon)">Submit</button>
+        </form>
+      </div>
+  </div>
+</div>
+</div><!-- ui grid -->
+</div>
+</div>

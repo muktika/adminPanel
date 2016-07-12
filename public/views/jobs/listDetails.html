@@ -1,0 +1,64 @@
+<div class="container-fluid page">
+  <br/><br/><br/><br/><br/>
+    <div class="col-sm-12 col-md-12">
+      <div class="col-sm-4 col-md-3">
+        
+        <div class="list-group">
+            <span ui-sref="layout.addJob" class="list-group-item active">
+                Job
+            </span>
+            <a ui-sref="layout.listDetails" class="list-group-item">
+                Post Details
+            </a>
+            <a ui-sref="layout.listLifecycle" class="list-group-item">
+                Life Cycle Details
+            </a>
+            <a ui-sref="layout.editFilter" class="list-group-item">
+                Filters
+            </a>
+            <a ui-sref="layout.listEli" class="list-group-item">
+                Eligibility 
+            </a>
+            <a ui-sref="layout.listTag" class="list-group-item">
+                Tags 
+            </a>
+            <a ui-sref="layout.listRef" class="list-group-item">
+                References
+            </a>
+            <a ui-sref="layout.listContent" class="list-group-item">
+                Other Contents
+            </a>
+            <a ui-sref="layout.listLang" class="list-group-item">
+                Language Test
+            </a><br/>
+            <center><a class="btn btn-primary" ng-click="previewLink(id)">Preview</a>
+            <a class="btn btn-success" ng-click="publishLink(id)">Publish</a></center>
+        </div>        
+      </div>
+      <div class="col-sm-8 col-md-9">
+      <div class="table-responsive allowX">
+        <table class="table-striped table">
+          <thead>
+            <tr>
+              <th>Job Title</th>
+              <th>Designation</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="post in jobPostDetail">
+              <td>{{ post.jobTitle }}</td>
+              <td>{{ post.designation }}</td>
+              <td>
+                  <a class="btn btn-sm btn-default" ng-click="editDetail(post)">Edit</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+  </div>
+</div>
+</div><!-- ui grid -->
+</div>
+</div>

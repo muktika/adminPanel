@@ -1,0 +1,186 @@
+<div class="container-fluid page">
+  <br/><br/><br/><br/><br/>
+    <div class="col-sm-12 col-md-12">
+      <div class="col-sm-4 col-md-3">
+        <div class="list-group">
+            <span ui-sref="layout.addJob" class="list-group-item active">
+                Job
+            </span>
+            <a ui-sref="layout.listDetails" class="list-group-item">
+                Post Details
+            </a>
+            <a ui-sref="layout.listLifecycle" class="list-group-item">
+                Life Cycle Details
+            </a>
+            <a ui-sref="layout.editFilter" class="list-group-item">
+                Filters
+            </a>
+            <a ui-sref="layout.listEli" class="list-group-item">
+                Eligibility 
+            </a>
+            <a ui-sref="layout.listTag" class="list-group-item">
+                Tags 
+            </a>
+            <a ui-sref="layout.listRef" class="list-group-item">
+                References
+            </a>
+            <a ui-sref="layout.listContent" class="list-group-item">
+                Other Contents
+            </a>
+            <a ui-sref="layout.listLang" class="list-group-item">
+                Language Test
+            </a><br/>
+            <center><a class="btn btn-primary" ng-click="previewLink(id)">Preview</a>
+            <a class="btn btn-success" ng-click="publishLink(id)">Publish</a></center>
+        </div>        
+      </div>
+      <div class="col-sm-8 col-md-9">
+        <form class="ui form" name="dForm">
+          <h4 class="ui dividing header">Edit Job Post Details</h4>
+          <div class="ui info message">Fields marked with asterisk (*) are mandatory</div>
+
+            <div class="field">
+              <label for="jobTitle">Job Title (*)</label>
+              <input type="text" ng-model="jobPost.jobTitle" name="title" required />
+              <span ng-if="dForm.title.$touched && dForm.title.$invalid">Please Enter Value</span>
+            </div>
+
+            <div class="field">
+              <label for="shortDescription">Short Description (*)</label>
+              <input type="text" ng-model="jobPost.shortDescription" name="desc" required/>
+              <span ng-if="dForm.desc.$touched && dForm.desc.$invalid">Please Enter Value</span>
+            </div>
+
+            <div class="field">
+              <label for="designation">Designation (*)</label>
+              <input type="text" ng-model="jobPost.designation" name="desig" required />
+              <span ng-if="dForm.desig.$touched && dForm.desig.$invalid">Please Enter Value</span>
+            </div>
+
+          <div class="fields">
+            <div class="two wide field">
+              <label for="isPublished">Is Published</label>
+              <input type="checkbox" ng-model="jobPost.isPublished">
+            </div>
+
+            <div class="two wide field">
+              <label for="isActive">Is Active</label>
+              <input type="checkbox" ng-model="jobPost.isActive"/>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="description">Description</label>
+            <text-angular ng-model="jobPost.description"></text-angular>
+          </div>
+
+          <div class="field">
+            <label for="perks">Perks</label>
+            <text-angular ng-model="jobPost.perks"></text-angular>
+          </div>
+
+         <div class="field">
+            <label for="selectionProcedure">Selection Procedure</label>
+            <text-angular ng-model="jobPost.selectionProcedure"></text-angular>
+          </div>
+
+          <div class="field">
+            <label for="applicationProcedure">Application Procedure</label>
+            <text-angular ng-model="jobPost.applicationProcedure"></text-angular>
+          </div>
+
+          <div class="field">
+            <label for="reservation">Reservation</label>
+            <text-angular ng-model="jobPost.reservation"></text-angular>
+          </div>
+
+          <div class="fields">
+            <div class="seven wide field">
+              <label for="popularName">Popular Name (*)</label>
+              <input type="text" required ng-model="jobPost.popularName" name="pop" required/>
+              <span ng-if="dForm.pop.$touched && dForm.pop.$invalid">Please Enter Value</span>
+            </div>
+
+            <div class="five wide field">
+              <label for="fees">Fees</label>
+              <input type="number" ng-model="jobPost.fees"/>
+            </div>
+          </div>
+
+          <div class="fields">
+            <div class="four wide field">
+              <label for="language">Language</label>
+              <select ng-model="jobPost.language">
+                <option value="en">English</option>
+                <option value="hi">Hindi</option>
+                <option value="kn">Kannada</option>
+              </select>
+            </div>
+
+            <div class="four wide field">
+              <label for="eligibleGender">Eligible Gender</label>
+              <select ng-model="jobFilter.gender">
+                 <option value="Any">Any</option>
+                 <option value="Male">Male</option>
+                 <option value="Female">Female</option>
+                 <option value="TransGender">TransGender</option>
+                 <option value="Unspecified">Unspecified</option>
+              </select>
+            </div>
+
+            <div class="six wide field" *ngIf="true">
+              <label for="postType">Job Post Type</label>
+              <select ng-model="jobPost.postType" name="ptype" required>
+                <option value="1">Clerk/ Assistants</option>
+                <option value="2">Officer/ Manager</option>
+                <option value="3">Village Officer/ Lekhpal/ Patwari</option>
+                <option value="4">Specialist- Information Technology (IT)</option>
+                <option value="5">Specialist- Engineer (all non IT)</option>
+                <option value="6">Specialist- Agriculture</option>
+                <option value="7">Specialist- Finance/ Treasury</option>
+                <option value="8">Specialist- Law/ Legal</option>
+                <option value="9">Specialist- Marketing</option>
+                <option value="10">Specialist- Human Resources (HR)/ Personnel</option>
+                <option value="11">Specialist- Company Secretary (CS)</option>
+                <option value="12">Specialist- Economist</option>
+                <option value="13">Specialist- Fire & Safety/ Security</option>
+                <option value="14">Specialist- Actuary/ Insurance/ Underwriting</option>
+                <option value="15">Specialist- Statistics</option>
+                <option value="16">Specialist- Geology</option>
+                <option value="17">Specialist- Accounts/ Audit</option>
+                <option value="18">Specialist- Biological, Chemical & other Sciences</option>
+                <option value="19">Specialist- Hindi/ Rajbhasha</option>
+                <option value="20">Specialist- Other Specialties</option>
+                <option value="21">Pilots</option>
+                <option value="22">Sailors</option>
+                <option value="23">Armed Personnel (Internal Security)</option>
+                <option value="24">Armed Personnel (Defence Forces)</option>
+                <option value="25">Data Entry Operators/ Stenographers</option>
+                <option value="26">Secretarial Assistants</option>
+                <option value="27">Researcher/ Scientists/ Project Coordinator</option>
+                <option value="28">Teacher/ Professor</option>
+                <option value="29">Interns/ Analysts</option>
+                <option value="30">Doctors</option>
+                <option value="31">Other Medical/ Social Workers/ Health Workers</option>
+                <option value="32">Veterinary</option>
+                <option value="33">Senior deputation or lateral entry posts</option>
+                <option value="34">Post retirement opportunities</option>
+                <option value="35">Blue Collar- Peon/ Driver/ Conductor/ Watchman/ Cleaner/ Helper/ Cook/ Worker/ Multi Tasking Staff etc.</option>
+                <option value="36">Skilled Worker- Tailor, Painter, Blacksmith, Carpenter, Draftsman, Mechanic, Electrician, Machinist, Black Smith etc.</option>
+                <option value="37">Technicians</option>
+                <option value="38">Field Worker- Attendants/ Operators/ Work Assistants/ Foreman</option>
+                <option value="39">Hostess & Steward</option>
+              </select>
+              <span ng-if="dForm.ptype.$touched && dForm.ptype.$invalid">Please Enter Value</span>
+            </div>
+          </div>
+          <br/>
+          <button  type="submit" class="ui button" ng-click="dForm.$valid && saveJobPost(jobPost)">Submit</button>
+      </form>
+</div>
+  </div>
+</div>
+</div><!-- ui grid -->
+</div>
+</div>
+    

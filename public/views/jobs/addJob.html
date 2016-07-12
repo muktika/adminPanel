@@ -1,0 +1,329 @@
+<div class="container-fluid page">
+  <br/><br/><br/><br/><br/>
+    <div class="col-sm-12 col-md-12">
+      <div class="col-sm-4 col-md-3">
+        
+        <div class="list-group">
+            <span ui-sref="layout.addJob" class="list-group-item active">
+                Job
+            </span>
+            <a ui-sref="layout.listDetails" class="list-group-item">
+                Post Details
+            </a>
+            <a ui-sref="layout.listLifecycle" class="list-group-item">
+                Life Cycle Details
+            </a>
+            <a ui-sref="layout.editFilter" class="list-group-item">
+                Filters
+            </a>
+            <a ui-sref="layout.listEli" class="list-group-item">
+                Eligibility 
+            </a>
+            <a ui-sref="layout.listTag" class="list-group-item">
+                Tags 
+            </a>
+            <a ui-sref="layout.listRef" class="list-group-item">
+                References
+            </a>
+            <a ui-sref="layout.listContent" class="list-group-item">
+                Other Contents
+            </a>
+            <a ui-sref="layout.listLang" class="list-group-item">
+                Language Test
+            </a><br/>
+            <center><a class="btn btn-primary" ng-click="previewLink(id)">Preview</a>
+            <a class="btn btn-success" ng-click="publishLink(id)">Publish</a></center>
+        </div>        
+      </div>
+      <div class="col-sm-8 col-md-9">
+        <form class="ui form" name="jForm">
+          <h4 class="ui dividing header">Edit Basic Job Info</h4>
+          <div class="ui info message">Fields marked with asterisk (*) are mandatory</div>
+          <div class="fields">
+            <div class="two wide field">
+              <label for="id">Job Id</label>
+              <input type="text" ng-model="job.id" readonly="true" />
+            </div>
+            <div class="three wide field">
+              <label for="orgCode">Job Organization (*)</label>
+              <input type="text" ng-model="job.orgCode" readonly="true" ng-if="changeO==0" />
+              <input type="text" id="search-org" ng-model="org.changeOrgTitle" ng-if="changeO==1" ng-change="autosearchOrg(job)" autocomplete="off"/>
+            </div>
+            <div class="two wide field">
+              <a class="btn btn-sm btn-default marginTop" ng-click="changeOrg()" ng-if="changeO==0">Change</a>
+            </div>
+            <!--div class="five wide field">
+              <label for="locationCode">Job Location (*)</label>
+              <!add location dropdown-->
+            <!--/div-->
+          </div>
+
+          <label>Job Location (*)</label>
+          <div ng-repeat="loc in jobLoc">
+            <input style="width:100px;" type="text" value="{{loc.location.locationName}}"><i class="fa fa-remove" ng-click="delLoc(loc)"></i></input>
+          </div><br/>
+          
+          
+          <div class="fields">
+            <div class="three wide field" ng-if="addL==1">
+              <input type="text" id="search-loc" ng-model="loc.changeLocTitle" ng-change="autosearchLoc()" autocomplete="off"/>
+            </div>
+            <div class="two wide field" ng-if="addL==0">
+              <a ng-click=addLoc() class="btn btn-default btn-sm">Add</a>
+            </div>
+            <br/>
+          </div>
+
+          <div class="fields">
+            <div class="four wide field">
+              <label for="jobCode">Job Code (*)</label>
+              <input type="text" ng-model="job.jobCode" readonly="true"/>
+            </div>
+            <div class="seven wide field">
+              <label for="permaCode">Perma Code (*)</label>
+              <input type="text" name="code" ng-model="job.permaCode" required />
+              <span ng-if="jForm.code.$touched && jForm.code.$invalid">Please Enter Value</span>
+            </div>
+          </div>
+
+          <div class="fields">
+            <div class="two wide field">
+              <label for="isOpen">Is Open</label>
+              <input type="checkbox" ng-model="job.isOpen"/>
+            </div>
+
+            <div class="two wide field">
+              <label for="isPublished">Is Published</label>
+              <input type="checkbox" ng-model="job.isPublished"/>
+            </div>
+
+            <div class="two wide field">
+              <label for="isActive">Is Active</label>
+              <input type="checkbox" ng-model="job.isActive"/>
+            </div>
+          </div>
+
+          <div class="fields">
+            <div class="four wide field">
+              <label for="announcementDate">Announcement Date</label>
+              <input type="text" ng-model="job.announcementDate"/>
+            </div>
+
+            <div class="five wide field">
+              <label for="language">Language (*)</label>
+              <select name="lang" ng-model="job.language" required>
+                <option value="en">English</option>
+                <option value="hi">Hindi</option>
+                <option value="kn">Kannada</option>
+              </select>
+              <span ng-if="jForm.lang.$touched && jForm.lang.$invalid">Please Enter Value</span>
+            </div>
+          </div>
+
+          <div class="fields">
+            <div class="three wide field">
+              <label for="minPositions">Min Positions (*)</label>
+              <input type="number" name="min" ng-model="job.minPositions" required/>
+              <span ng-if="jForm.min.$touched && jForm.min.$invalid">Please Enter Value</span>
+            </div>
+
+            <div class="three wide field">
+              <label for="maxPositions">Max Positions (*)</label>
+              <input type="number" ng-model="job.maxPositions" name="max" required/>
+              <span ng-if="jForm.max.$touched && jForm.max.$invalid">Please Enter Value</span>
+            </div>
+
+            <div class="three wide field">
+              <label for="computedPositions">Computed Positions (*)</label>
+              <input type="number" name="cpos" ng-model="job.computedPositions" required />
+              <span ng-if="jForm.cpos.$touched && jForm.cpos.$invalid">Please Enter Value</span>
+            </div>
+          </div>
+
+
+          <h4 class="ui dividing header">Salary</h4>
+          <div class="fields">
+            <div class="five wide field">
+              <label for="minSalary">Min Salary (*)</label>
+              <input type="number" ng-model="job.minSalary" name="mins" required />
+              <span ng-if="jForm.mins.$touched && jForm.mins.$invalid">Please Enter Value</span>
+            </div>
+
+            <div class="five wide field">
+              <label for="maxSalary">Max Salary (*)</label>
+              <input type="number" ng-model="job.maxSalary" name="maxs" required />
+              <span ng-if="jForm.maxs.$touched && jForm.maxs.$invalid">Please Enter Value</span>
+            </div>
+
+            <div class="five wide field">
+              <label for="computedSalary">Computed salary (*)</label>
+              <input type="number" ng-model="job.computedSalary" name="cs" required />
+              <span ng-if="jForm.cs.$touched && jForm.cs.$invalid">Please Enter Value</span>
+            </div>
+          </div><!-- fields -->
+
+          <div class="field">
+            <label for="salaryData">Salary data</label>
+            <text-angular ng-model="job.salaryData"></text-angular>
+          </div>
+
+          <div class="field">
+            <label for="rolesResponsibility">Roles and Responsibility</label>
+            <text-angular ng-model="job.rolesResponsibility"></text-angular>
+          </div>
+
+          <div class="fields">
+            <div class="two wide field">
+              <label for="hasLocation">Has Location</label>
+              <input type="checkbox" ng-model="job.hasLocation"/>
+            </div>
+
+            <div class="five wide field">
+              <label for="sourceUrl">Source URL</label>
+              <input type="url" ng-model="job.sourceUrl">
+            </div>
+          </div>
+
+          <div class="fields">
+              <br/>
+              <div class="two wide field" ng-if="showUrl==0">
+                  <label>Apply Link</label>
+                  <a target="_blank" ng-href="{{job.applyUrl}}" class="btn btn-default">View Url</a> 
+              </div>
+              <div class="two wide field" ng-if="showUrl==1">
+                  <label>Apply Link</label>
+                  <a target="_blank" ng-href="{{pdfUrl}}" class="btn btn-default">View Url</a> 
+              </div>
+              <div class="four wide field">
+                <label>Apply URL</label>
+                <input type="url" ng-model="job.applyUrl"/>
+              </div>
+              <div class="nine wide field">
+                <label>Change:</label>
+                <button ng-if="showUpload==0" ng-click="uploadByPdf()" class="btn btn-primary">Upload from Machine</button>
+                <input ng-if="showUpload==1" type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>
+                <button ng-if="showUpload==1" ng-click="cancelUp()" class="btn btn-sm btn-default">Cancel</button>
+                <button ng-if="showUpload==0" ng-click="uploadByUrl()" class="btn btn-primary">Upload from Url</button>
+                <input ng-if="showUpload==2" type="url" ng-model="up.upUrl"/>
+                <button ng-if="showUpload==2" ng-click="uploadPUrl(up.upUrl)" class="btn btn-sm btn-default">Save</button>
+                <button ng-if="showUpload==2" ng-click="cancelUp()" class="btn btn-sm btn-default">Cancel</button>
+              </div>
+              <br/>
+          </div>
+
+          <div class="fields">
+            <div class="five wide field" >
+              <label for="postType">Post Type (*)</label>
+              <select ng-model="job.postType" name="post" required>
+                <option value="1">Clerk/ Assistants</option>
+                <option value="2">Officer/ Manager</option>
+                <option value="3">Village Officer/ Lekhpal/ Patwari</option>
+                <option value="4">Specialist- Information Technology (IT)</option>
+                <option value="5">Specialist- Engineer (all non IT)</option>
+                <option value="6">Specialist- Agriculture</option>
+                <option value="7">Specialist- Finance/ Treasury</option>
+                <option value="8">Specialist- Law/ Legal</option>
+                <option value="9">Specialist- Marketing</option>
+                <option value="10">Specialist- Human Resources (HR)/ Personnel</option>
+                <option value="11">Specialist- Company Secretary (CS)</option>
+                <option value="12">Specialist- Economist</option>
+                <option value="13">Specialist- Fire & Safety/ Security</option>
+                <option value="14">Specialist- Actuary/ Insurance/ Underwriting</option>
+                <option value="15">Specialist- Statistics</option>
+                <option value="16">Specialist- Geology</option>
+                <option value="17">Specialist- Accounts/ Audit</option>
+                <option value="18">Specialist- Biological, Chemical & other Sciences</option>
+                <option value="19">Specialist- Hindi/ Rajbhasha</option>
+                <option value="20">Specialist- Other Specialties</option>
+                <option value="21">Pilots</option>
+                <option value="22">Sailors</option>
+                <option value="23">Armed Personnel (Internal Security)</option>
+                <option value="24">Armed Personnel (Defence Forces)</option>
+                <option value="25">Data Entry Operators/ Stenographers</option>
+                <option value="26">Secretarial Assistants</option>
+                <option value="27">Researcher/ Scientists/ Project Coordinator</option>
+                <option value="28">Teacher/ Professor</option>
+                <option value="29">Interns/ Analysts</option>
+                <option value="30">Doctors</option>
+                <option value="31">Other Medical/ Social Workers/ Health Workers</option>
+                <option value="32">Veterinary</option>
+                <option value="33">Senior deputation or lateral entry posts</option>
+                <option value="34">Post retirement opportunities</option>
+                <option value="35">Blue Collar- Peon/ Driver/ Conductor/ Watchman/ Cleaner/ Helper/ Cook/ Worker/ Multi Tasking Staff etc.</option>
+                <option value="36">Skilled Worker- Tailor, Painter, Blacksmith, Carpenter, Draftsman, Mechanic, Electrician, Machinist, Black Smith etc.</option>
+                <option value="37">Technicians</option>
+                <option value="38">Field Worker- Attendants/ Operators/ Work Assistants/ Foreman</option>
+                <option value="39">Hostess & Steward</option>
+              </select>
+              <span ng-if="jForm.post.$touched && jForm.post.$invalid">Please Select Value</span>
+            </div>
+
+            <div class="five wide field" >
+              <label for="employmentType">Employment Type (*)</label>
+              <select ng-model="job.employmentType" name="etype" required>
+                <option value="Regular">Regular</option>
+                <option value="Contract">Contract</option>
+                <option value="Internship">Internship</option>
+                <option value="Deputation">Deputation</option>
+              </select>
+              <span ng-if="jForm.etype.$touched && jForm.etype.$invalid">Please Select Value</span>
+            </div>
+          </div>
+
+          <div class="fields">
+            <div class="six wide field">
+              <label for="organizedBy">Organized By</label>
+              <input type="text" ng-model="job.organizedBy"/>
+            </div>
+
+            <div class="six wide field">
+              <label for="employerName">Employer Name</label>
+              <input type="text" ng-model="job.employerName"/>
+            </div>
+          </div>
+
+          <div class="fields">
+            <div class="six wide field">
+              <label for="employmentDuration">Employment Duration</label>
+              <input type="text" ng-model="job.employmentDuration"/>
+            </div>
+
+            <div class="six wide field">
+              <label for="computedDurationDays">Computed Duration Days</label>
+              <input type="number" min="0" ng-model="job.computedDurationDays"/>
+            </div>
+          </div>
+
+          <div class="fields">
+            <div class="two wide field">
+              <label for="applyOnline">Apply Online</label>
+              <input type="checkbox" ng-model="job.applyOnline"/>
+            </div>
+          </div>
+
+          <div class="fields">
+            <div class="six wide field">
+              <label for="applyStartdate">Apply Start Date</label>
+              <input type="text" ng-model="job.applyStartdate" />
+            </div>
+
+            <div class="six wide field">
+              <label for="applyLastdate">Apply Last Date</label>
+              <input type="text" ng-model="job.applyLastdate"/>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="gradeInfo">Grade Info</label>
+            <input type="text" ng-model="job.gradeInfo"/>
+          </div>
+
+          <button  type="submit" class="ui button" ng-click="jForm.$valid && saveJob(job)">Submit</button>
+        </form>
+      </div>
+  </div>
+</div>
+</div><!-- ui grid -->
+</div>
+</div>
+    

@@ -1,0 +1,26 @@
+{
+  "name": "mockbank",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "commander": "^2.9.0",
+    "content-disposition": "^0.5.1",
+    "express": "^4.13.4",
+    "fs": "0.0.2",
+    "gcloud": "^0.36.0",
+    "google-auth-library": "^0.9.8",
+    "mocha": "^2.5.3",
+    "multer": "^1.1.0",
+    "request": "^2.72.0",
+    "should": "^9.0.2",
+    "supertest": "^1.2.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}
