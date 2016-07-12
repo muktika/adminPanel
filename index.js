@@ -30,14 +30,14 @@ var upload = multer({ storage: storage });
 var multiupload = upload.single('file');
 app.use(multiupload);
  
-var gcs = gcloud.storage({
-  projectId: projectID,
-  keyFilename: 'path to key file'
-});
+// var gcs = gcloud.storage({
+//   projectId: projectID,
+//   keyFilename: 'path to key file'
+// });
 
 
-var bucket = gcs.bucket('bucket name');
-var pdfbucket = gcs.bucket('bucket name');
+// var bucket = gcs.bucket('bucket name');
+// var pdfbucket = gcs.bucket('bucket name');
 
 app.post('/uploadImage', function(req, res) {
   multiupload(req, res, function (err) {

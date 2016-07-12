@@ -7,7 +7,7 @@ myApp.config(['$httpProvider', '$locationProvider', '$urlRouterProvider','$state
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
   $urlRouterProvider.otherwise('/');
   LoopBackResourceProvider.setAuthHeader('X-Access-Token');
-  LoopBackResourceProvider.setUrlBase('api_url');
+  //LoopBackResourceProvider.setUrlBase('api_url');
 
   // $locationProvider.html5Mode(
   //   {
