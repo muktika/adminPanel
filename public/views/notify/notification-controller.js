@@ -74,7 +74,7 @@ angular.module('mockbank')
           url: gcmUrl,
           headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'key=AIzaSyDDt3RqnE2EIwndU2jZesuuYTFV-H69g_Y'
+               // 'Authorization': ''
             },
           data: {
               "collapse_key": "score_update",

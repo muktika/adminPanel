@@ -1,12 +1,12 @@
 'use strict';
-var myApp = angular.module('mockbank', ['ui.router', 'lbServices', 'ngResource', 'textAngular']);
+var myApp = angular.module('mockbank', ['ui.router','ngResource', 'textAngular']);
 var api_url = "api_url";
-myApp.config(['$httpProvider', '$locationProvider', '$urlRouterProvider','$stateProvider','LoopBackResourceProvider',function($httpProvider, $locationProvider, $urlRouterProvider,$stateProvider, LoopBackResourceProvider){
+myApp.config(['$httpProvider', '$locationProvider', '$urlRouterProvider','$stateProvider',function($httpProvider, $locationProvider, $urlRouterProvider,$stateProvider){
 
   $httpProvider.defaults.useXDomain = true;
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
   $urlRouterProvider.otherwise('/');
-  LoopBackResourceProvider.setAuthHeader('X-Access-Token');
+  //LoopBackResourceProvider.setAuthHeader('X-Access-Token');
   //LoopBackResourceProvider.setUrlBase('api_url');
 
   // $locationProvider.html5Mode(
